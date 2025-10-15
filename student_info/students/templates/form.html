@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Information Form</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f6fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .success {
+            background-color: #e6ffe6;
+            color: #2b662b;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        button {
+            background-color: #3a86ff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            width: 100%;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #265dbe;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Student Information Form</h2>
+
+    {% if success_message %}
+        <div class="success">{{ success_message }}</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
